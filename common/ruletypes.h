@@ -165,6 +165,7 @@ RULE_BOOL(Character, UseOldBindWound, false, "Uses the original bind wound behav
 RULE_BOOL(Character, GrantHoTTOnCreate, false, "Grant Health of Target's Target leadership AA on character creation")
 RULE_BOOL(Character, UseOldConSystem, false, "Setting whether the pre SoF era consider system should be used")
 RULE_BOOL(Character, OPClientUpdateVisualDebug, false, "Shows a pulse and forward directional particle each time the client sends its position to server")
+RULE_BOOL(Character, AttunableItemsAttuneOnLoot, false, "If enabled, attunable items will attune to your character when looted")
 RULE_BOOL(Character, AllowCrossClassTrainers, false, "If the value is true, a player can also train with other class Guildmasters.")
 RULE_BOOL(Character, PetsUseReagents, true, "Conjuring pets consumes reagents")
 RULE_BOOL(Character, DismountWater, true, "Dismount horses when entering water")
