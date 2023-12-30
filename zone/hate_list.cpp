@@ -425,7 +425,8 @@ Mob *HateList::GetMobWithMostHateOnList(
 
 			int64 current_hate = cur->stored_hate_amount;
 
-			if (m->IsOfClientBot()) {
+			// if (m->IsOfClientBot()) {
+			if (m->IsOfClientBot() || (RuleB(Combat, AllowPetTanking) == true && m->IsPet())){
 				if (m->IsClient() && m->CastToClient()->IsSitting()) {
 					aggro_mod += RuleI(Aggro, SittingAggroMod);
 				}
@@ -454,7 +455,10 @@ Mob *HateList::GetMobWithMostHateOnList(
 
 					if (RuleI(Aggro, MeleeRangeAggroMod) != 0) {
 						if (center->CombatRange(m)) {
-							aggro_mod += RuleI(Aggro, MeleeRangeAggroMod);
+							// aggro_mod += RuleI(Aggro, MeleeRangeAggroMod);
+							if (m->IsClient() || (RuleB(Combat, ApplyMeleeRangeAggroModToPets) == true && m->IsPet())) {
+								aggro_mod += RuleI(Aggro, MeleeRangeAggroMod);
+							}
 						}
 					}
 				}
