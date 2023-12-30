@@ -599,35 +599,40 @@ int Mob::MonkSpecialAttack(Mob *other, uint8 unchecked_type)
 	switch (unchecked_type) {
 	case EQ::skills::SkillFlyingKick:
 		skill_type = EQ::skills::SkillFlyingKick;
-		max_dmg = GetBaseSkillDamage(skill_type);
+		// max_dmg = GetBaseSkillDamage(skill_type);
+		max_dmg = (GetBaseSkillDamage(skill_type) * ((RuleI(Combat, FlyingKickBonus) / 100) + 1));
 		min_dmg = 0; // revamped FK formula is missing the min mod?
 		DoAnim(animFlyingKick, 0, false);
 		reuse = FlyingKickReuseTime;
 		break;
 	case EQ::skills::SkillDragonPunch:
 		skill_type = EQ::skills::SkillDragonPunch;
-		max_dmg = GetBaseSkillDamage(skill_type);
+		// max_dmg = GetBaseSkillDamage(skill_type);
+		max_dmg = (GetBaseSkillDamage(skill_type) * ((RuleI(Combat, DragonPunchBonus) / 100) + 1));
 		itemslot = EQ::invslot::slotHands;
 		DoAnim(animTailRake, 0, false);
 		reuse = TailRakeReuseTime;
 		break;
 	case EQ::skills::SkillEagleStrike:
 		skill_type = EQ::skills::SkillEagleStrike;
-		max_dmg = GetBaseSkillDamage(skill_type);
+		// max_dmg = GetBaseSkillDamage(skill_type);
+		max_dmg = (GetBaseSkillDamage(skill_type) * ((RuleI(Combat, EagleStrikeBonus) / 100) + 1));
 		itemslot = EQ::invslot::slotHands;
 		DoAnim(animEagleStrike, 0, false);
 		reuse = EagleStrikeReuseTime;
 		break;
 	case EQ::skills::SkillTigerClaw:
 		skill_type = EQ::skills::SkillTigerClaw;
-		max_dmg = GetBaseSkillDamage(skill_type);
+		// max_dmg = GetBaseSkillDamage(skill_type);
+		max_dmg = (GetBaseSkillDamage(skill_type) * ((RuleI(Combat, TigerClawBonus) / 100) + 1));
 		itemslot = EQ::invslot::slotHands;
 		DoAnim(animTigerClaw, 0, false);
 		reuse = TigerClawReuseTime;
 		break;
 	case EQ::skills::SkillRoundKick:
 		skill_type = EQ::skills::SkillRoundKick;
-		max_dmg = GetBaseSkillDamage(skill_type);
+		// max_dmg = GetBaseSkillDamage(skill_type);
+		max_dmg = (GetBaseSkillDamage(skill_type) * ((RuleI(Combat, RoundKickBonus) / 100) + 1));
 		DoAnim(animRoundKick, 0, false);
 		reuse = RoundKickReuseTime;
 		break;

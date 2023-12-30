@@ -540,6 +540,11 @@ RULE_BOOL(Combat, SummonMeleeRange, true, "Enable or disable summoning of a play
 RULE_BOOL(Combat, WaterMatchRequiredForAutoFireLoS, true, "Enable/Disable the requirement of both the attacker/victim being both in or out of water for AutoFire LoS to pass.")
 RULE_INT(Combat, ExtraAllowedKickClassesBitmask, 0, "Bitmask for allowing extra classes beyond Warrior, Ranger, Beastlord, and Berserker to kick, No Extra Classes (0) by default")
 RULE_INT(Combat, MaxProcs, 4, "Adjustable maximum number of procs per round, the hard cap is MAX_PROCS (11). Requires mob repop or client zone when changed")
+RULE_INT(Combat, FlyingKickBonus, 0, "% Modifier that this skill gets to str and skill bonuses")
+RULE_INT(Combat, DragonPunchBonus, 0, "% Modifier that this skill gets to str and skill bonuses")
+RULE_INT(Combat, EagleStrikeBonus, 0, "% Modifier that this skill gets to str and skill bonuses")
+RULE_INT(Combat, TigerClawBonus, 0, "% Modifier that this skill gets to str and skill bonuses")
+RULE_INT(Combat, RoundKickBonus, 0, "% Modifier that this skill gets to str and skill bonuses")
 RULE_CATEGORY_END()
 
 RULE_CATEGORY(NPC)
