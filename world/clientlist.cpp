@@ -98,6 +98,7 @@ void ClientList::GetCLEIP(uint32 in_ip) {
 		cle = iterator.GetData();
 		if (
 			cle->GetIP() == in_ip &&
+			(cle->Online() >= CLE_Status_Online) && 
 			(
 				cle->Admin() < RuleI(World, ExemptMaxClientsStatus) ||
 				RuleI(World, ExemptMaxClientsStatus) < 0
