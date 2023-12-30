@@ -1589,9 +1589,9 @@ void Corpse::LootItem(Client *client, const EQApplicationPacket *app)
 		// safe to ACK now
 		client->QueuePacket(app);
 
-		if (!IsPlayerCorpse() && RuleB(Character, AttunableItemsAttuneOnLoot) && inst->GetItem()->Attuneable) {
-			inst->SetAttuned(true);
-		}
+		// if (!IsPlayerCorpse() && RuleB(Character, AttunableItemsAttuneOnLoot) && inst->GetItem()->Attuneable) {
+		// 	inst->SetAttuned(true);
+		// }
 
 		if (
 			!IsPlayerCorpse() &&

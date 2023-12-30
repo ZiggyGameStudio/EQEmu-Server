@@ -358,7 +358,16 @@ void NPC::AddLootDrop(
 	item->aug_4             = augment_four;
 	item->aug_5             = augment_five;
 	item->aug_6             = augment_six;
-	item->attuned           = false;
+	// item->attuned           = false;
+	// This attunes item to the NPC so when a player loots they will receive the
+	//  standard "no drop" confirmation box. This is desirable because the item will
+	//  be attuned on loot rather than on equip, so the looter should be warned.
+	if (RuleB(Character, AttunableItemsAttuneOnLoot) && item2->Attuneable == true) {
+		item->attuned = true;
+	}
+	else {
+		item->attuned = false;
+	}
 	item->trivial_min_level = loot_drop.trivial_min_level;
 	item->trivial_max_level = loot_drop.trivial_max_level;
 	item->equip_slot        = EQ::invslot::SLOT_INVALID;
