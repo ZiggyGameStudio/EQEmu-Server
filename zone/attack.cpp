@@ -222,6 +222,10 @@ int Mob::GetTotalToHit(EQ::skills::SkillType skill, int chance_mod)
 		aabonuses.HitChanceEffect[skill] +
 		spellbonuses.HitChanceEffect[skill];
 
+	// Ranger archery accuracy is abnormally bad -- implementing a basic rule to increase as needed.
+	if (GetClass() == RANGER && skill == EQEmu::skills::SkillArchery)
+		hit_bonus += RuleI(Combat, BonusArcheryAccuracyRng);
+
 	accuracy = (accuracy * (100 + hit_bonus)) / 100;
 
 	// TODO: April 2003 added an archery/throwing PVP accuracy penalty while moving, should be in here some where,
@@ -916,7 +920,8 @@ int Mob::ACSum(bool skip_caps)
 		auto softcap = GetACSoftcap();
 		auto returns = GetSoftcapReturns();
 		int total_aclimitmod = aabonuses.CombatStability + itembonuses.CombatStability + spellbonuses.CombatStability;
-		if (total_aclimitmod && (GetClass() == WARRIOR || GetClass() == PALADIN || GetClass() == SHADOWKNIGHT))
+		// if (total_aclimitmod && (GetClass() == WARRIOR || GetClass() == PALADIN || GetClass() == SHADOWKNIGHT))
+		if (total_aclimitmod && (GetClass() == 1 || GetClass() == 3 || GetClass() == 5))
 			total_aclimitmod += RuleI(Combat, BonusMitigationPctWarPalShd);
 		if (total_aclimitmod)
 			softcap = (softcap * (100 + total_aclimitmod)) / 100;
