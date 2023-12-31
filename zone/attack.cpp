@@ -916,6 +916,8 @@ int Mob::ACSum(bool skip_caps)
 		auto softcap = GetACSoftcap();
 		auto returns = GetSoftcapReturns();
 		int total_aclimitmod = aabonuses.CombatStability + itembonuses.CombatStability + spellbonuses.CombatStability;
+		if (total_aclimitmod && (GetClass() == WARRIOR || GetClass() == PALADIN || GetClass() == SHADOWKNIGHT))
+			total_aclimitmod += RuleI(Combat, BonusMitigationPctWarPalShd);
 		if (total_aclimitmod)
 			softcap = (softcap * (100 + total_aclimitmod)) / 100;
 		softcap += shield_ac;
