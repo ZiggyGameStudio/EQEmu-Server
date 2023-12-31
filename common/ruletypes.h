@@ -344,8 +344,6 @@ RULE_BOOL(Map, MobZVisualDebug, false, "Displays spell effects determining wheth
 RULE_BOOL(Map, MobPathingVisualDebug, false, "Displays nodes in pathing points in realtime to help with visual debugging")
 RULE_REAL(Map, FixPathingZMaxDeltaSendTo, 20, "At runtime in SendTo: maximum change in Z to allow the BestZ code to apply")
 RULE_INT(Map, FindBestZHeightAdjust, 1, "Adds this to the current Z before seeking the best Z position")
-RULE_BOOL(Combat, AllowPetTanking, false, "[AD Custom] If true, pets are considered for aggro over players in melee range")
-RULE_INT(Combat, BonusMitigationPctWarPalShd, 0, "[AD Custom] If set higher than 0, Bonus mitigation % applied only to war/pal/shd")
 RULE_CATEGORY_END()
 
 RULE_CATEGORY(Pathing)
@@ -519,7 +517,6 @@ RULE_BOOL(Combat, UseRevampHandToHand, false, "Use h2h revamped dmg/delays I bel
 RULE_BOOL(Combat, ClassicMasterWu, false, "Classic Master Wu uses a random special, modern doesn't")
 RULE_REAL(Combat, HitBoxMod, 1.00, "Added to test hit boxes.")
 RULE_INT(Combat, LevelToStopDamageCaps, 0, "Level to stop damage caps. 1 will effectively disable them, 20 should give basically same results as old incorrect system")
-RULE_BOOL(Combat, AllowPetTanking, false, "If true, pets are considered for aggro over players in melee range")
 RULE_INT(Combat, LevelToStopACTwinkControl, 50, "Level to stop armorclass twink control. 1 will effectively disable it, 50 should give basically same results as current system")
 RULE_BOOL(Combat, ClassicNPCBackstab, false, "True disables NPC facestab - NPC get normal attack if not behind")
 RULE_BOOL(Combat, UseNPCDamageClassLevelMods, true, "Uses GetClassLevelDamageMod calc in npc_scale_manager")
@@ -548,6 +545,9 @@ RULE_INT(Combat, DragonPunchBonus, 0, "% Modifier that this skill gets to str an
 RULE_INT(Combat, EagleStrikeBonus, 0, "% Modifier that this skill gets to str and skill bonuses")
 RULE_INT(Combat, TigerClawBonus, 0, "% Modifier that this skill gets to str and skill bonuses")
 RULE_INT(Combat, RoundKickBonus, 0, "% Modifier that this skill gets to str and skill bonuses")
+RULE_BOOL(Combat, AllowPetTanking, false, "[AD Custom] If true, pets are considered for aggro over players in melee range")
+RULE_INT(Combat, BonusMitigationPctWarPalShd, 0, "[AD Custom] If set higher than 0, Bonus mitigation % applied only to war/pal/shd")
+
 RULE_CATEGORY_END()
 
 RULE_CATEGORY(NPC)
