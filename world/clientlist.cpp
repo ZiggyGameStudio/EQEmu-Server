@@ -98,11 +98,14 @@ void ClientList::GetCLEIP(uint32 in_ip) {
 		cle = iterator.GetData();
 		if (
 			cle->GetIP() == in_ip &&
-			(cle->Online() >= CLE_Status_Online) && 
+			// (cle->Online() >= CLE_Status_Online) && 
 			(
 				cle->Admin() < RuleI(World, ExemptMaxClientsStatus) ||
 				RuleI(World, ExemptMaxClientsStatus) < 0
 			)
+// /home/eqemu/code2/world/clientlist.cpp: In member function ‘void ClientList::GetCLEIP(uint32)’:
+// /home/eqemu/code2/world/clientlist.cpp:101:43: error: ‘CLE_Status_Online’ was not declared in this scope; did you mean ‘CLEStatusString’?
+//   101 |                         (cle->Online() >= CLE_Status_Online) &&
 		) { // If the IP matches, and the connection admin status is below the exempt status, or exempt status is less than 0 (no-one is exempt)
 			auto ip_string = long2ip(cle->GetIP());
 			count++; // Increment the occurences of this IP address
