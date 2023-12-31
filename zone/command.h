@@ -192,6 +192,7 @@ void command_zoneshutdown(Client *c, const Seperator *sep);
 void command_zopp(Client *c, const Seperator *sep);
 void command_zsafecoords(Client *c, const Seperator *sep);
 void command_zsave(Client *c, const Seperator *sep);
+void command_showkilltimes(Client *c, const Seperator *sep);
 
 #include "bot.h"
 void command_bot(Client*c, const Seperator *sep);

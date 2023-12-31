@@ -239,7 +239,8 @@ int command_init(void)
 		command_add("zoneinstance", "[Instance ID] [X] [Y] [Z] - Teleport to specified Instance by ID (coordinates are optional)", AccountStatus::Guide, command_zone_instance) ||
 		command_add("zoneshutdown", "[shortname] - Shut down a zone server", AccountStatus::GMLeadAdmin, command_zoneshutdown) ||
 		command_add("zopp", "Troubleshooting command - Sends a fake item packet to you. No server reference is created.", AccountStatus::GMImpossible, command_zopp) ||
-		command_add("zsave", " Saves zheader to the database", AccountStatus::QuestTroupe, command_zsave)
+		command_add("zsave", " Saves zheader to the database", AccountStatus::QuestTroupe, command_zsave) ||
+		command_add("showkilltimes", "Shows progression kill times.", AccountStatus::GMAdmin, command_showkilltimes)
 	) {
 		command_deinit();
 		return -1;
@@ -927,3 +928,12 @@ void command_bot(Client *c, const Seperator *sep)
 #include "gm_commands/zone_instance.cpp"
 #include "gm_commands/zopp.cpp"
 #include "gm_commands/zsave.cpp"
+
+void command_showkilltimes(Client *c, const Seperator *sep)
+{
+	// Shows last progression kill time per npc and players who were flagged
+	std::string query = "SELECT `last_kill_time`, `npc_name`, `flagged_players` FROM `ad_last_kill` ORDER BY `last_kill_time` DESC";
+	auto results = database.QueryDatabase(query);
+	for (auto row = results.begin(); row != results.end(); ++row)
+		c->Message(15, "[%s] %s {%s}", row[0], row[1], row[2]);
+}
