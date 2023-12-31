@@ -1599,6 +1599,13 @@ void Mob::SentPositionPacket(float dx, float dy, float dz, float dh, int anim, b
 	entity_list.QueueClients(this, &outapp, send_to_self == false, false);
 }
 
+// Mob::SendPositionUpdate(uint8 iSendToSelf) no longer exists
+	// else if (DistanceSquared(last_major_update_position, m_Position) >= (100 * 100)) {
+	// 	entity_list.QueueClients(this, app, true, true);
+	// 	last_major_update_position = m_Position;
+	// 	is_distance_roamer = true;
+	// }
+
 // this is for SendPosition()
 void Mob::MakeSpawnUpdateNoDelta(PlayerPositionUpdateServer_Struct *spu) {
 	memset(spu, 0xff, sizeof(PlayerPositionUpdateServer_Struct));
