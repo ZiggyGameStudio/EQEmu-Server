@@ -223,7 +223,7 @@ int Mob::GetTotalToHit(EQ::skills::SkillType skill, int chance_mod)
 		spellbonuses.HitChanceEffect[skill];
 
 	// Ranger archery accuracy is abnormally bad -- implementing a basic rule to increase as needed.
-	if (GetClass() == Class::Ranger && skill == EQEmu::skills::SkillArchery)
+	if (GetClass() == Class::Ranger && skill == EQ::skills::SkillArchery)
 		hit_bonus += RuleI(Combat, BonusArcheryAccuracyRng);
 
 	accuracy = (accuracy * (100 + hit_bonus)) / 100;
@@ -921,7 +921,7 @@ int Mob::ACSum(bool skip_caps)
 		auto returns = GetSoftcapReturns();
 		int total_aclimitmod = aabonuses.CombatStability + itembonuses.CombatStability + spellbonuses.CombatStability;
 		// if (total_aclimitmod && (GetClass() == WARRIOR || GetClass() == PALADIN || GetClass() == SHADOWKNIGHT))
-		if (total_aclimitmod && (GetClass() == Class::Warrior || GetClass() == Class::Paladin || GetClass() == Class::Shadowknight))
+		if (total_aclimitmod && (GetClass() == Class::Warrior || GetClass() == Class::Paladin || GetClass() == Class::ShadowKnight))
 			total_aclimitmod += RuleI(Combat, BonusMitigationPctWarPalShd);
 		if (total_aclimitmod)
 			softcap = (softcap * (100 + total_aclimitmod)) / 100;
