@@ -438,7 +438,10 @@ Mob *HateList::GetMobWithMostHateOnList(
 
 					if (RuleI(Aggro, MeleeRangeAggroMod) != 0) {
 						if (center->CombatRange(m)) {
-							aggro_mod += RuleI(Aggro, MeleeRangeAggroMod);
+							// aggro_mod += RuleI(Aggro, MeleeRangeAggroMod);
+							if (m->IsClient() || (RuleB(Combat, ApplyMeleeRangeAggroModToPets) == true && m->IsPet())) {
+								aggro_mod += RuleI(Aggro, MeleeRangeAggroMod);
+							}
 
 							if (current_hate > hate_client_type_in_range || cur->is_entity_frenzy) {
 								hate_client_type_in_range = current_hate;
@@ -456,9 +459,6 @@ Mob *HateList::GetMobWithMostHateOnList(
 					if (RuleI(Aggro, MeleeRangeAggroMod) != 0) {
 						if (center->CombatRange(m)) {
 							aggro_mod += RuleI(Aggro, MeleeRangeAggroMod);
-							// if (m->IsClient() || (RuleB(Combat, ApplyMeleeRangeAggroModToPets) == true && m->IsPet())) {
-							// 	aggro_mod += RuleI(Aggro, MeleeRangeAggroMod);
-							// }
 						}
 					}
 				}
