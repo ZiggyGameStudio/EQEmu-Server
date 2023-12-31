@@ -1872,7 +1872,8 @@ void Client::DoStaminaHungerUpdate()
 
 	LogFood("hunger_level: [{}] thirst_level: [{}] before loss", m_pp.hunger_level, m_pp.thirst_level);
 
-	if (zone->GetZoneID() != 151 && !GetGM()) {
+	// if (zone->GetZoneID() != 151 && !GetGM()) {
+	if (zone->GetZoneID() != RuleI(Zone, HubZoneIDForNoFoodLoss) && zone->GetZoneID() != 151 && !GetGM()) {
 		int loss = RuleI(Character, FoodLossPerUpdate);
 		if (GetHorseId() != 0)
 			loss *= 3;
