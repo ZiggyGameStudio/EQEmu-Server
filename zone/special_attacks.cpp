@@ -1019,7 +1019,8 @@ void Mob::DoArcheryAttackDmg(Mob *other, const EQ::ItemInstance *RangeWeapon, co
 
 		DamageHitInfo my_hit {};
 		my_hit.base_damage = MaxDmg;
-		my_hit.min_damage = 0;
+		// my_hit.min_damage = 0;
+		my_hit.min_damage = ceil(MaxDmg / 5); // This seemed a bit silly to have at 0
 		my_hit.damage_done = 1;
 
 		my_hit.skill = EQ::skills::SkillArchery;
