@@ -223,7 +223,7 @@ int Mob::GetTotalToHit(EQ::skills::SkillType skill, int chance_mod)
 		spellbonuses.HitChanceEffect[skill];
 
 	// Ranger archery accuracy is abnormally bad -- implementing a basic rule to increase as needed.
-	if (GetClass() == RANGER && skill == EQEmu::skills::SkillArchery)
+	if (GetClass() == Class::Ranger && skill == EQEmu::skills::SkillArchery)
 		hit_bonus += RuleI(Combat, BonusArcheryAccuracyRng);
 
 	accuracy = (accuracy * (100 + hit_bonus)) / 100;
@@ -921,7 +921,7 @@ int Mob::ACSum(bool skip_caps)
 		auto returns = GetSoftcapReturns();
 		int total_aclimitmod = aabonuses.CombatStability + itembonuses.CombatStability + spellbonuses.CombatStability;
 		// if (total_aclimitmod && (GetClass() == WARRIOR || GetClass() == PALADIN || GetClass() == SHADOWKNIGHT))
-		if (total_aclimitmod && (GetClass() == 1 || GetClass() == 3 || GetClass() == 5))
+		if (total_aclimitmod && (GetClass() == Class::Warrior || GetClass() == Class::Paladin || GetClass() == Class::Shadowknight))
 			total_aclimitmod += RuleI(Combat, BonusMitigationPctWarPalShd);
 		if (total_aclimitmod)
 			softcap = (softcap * (100 + total_aclimitmod)) / 100;
@@ -5914,7 +5914,7 @@ void Mob::CommonOutgoingHitSuccess(Mob* defender, DamageHitInfo &hit, ExtraAttac
 			hit.damage_done = headshot;
 		}
 		else if (GetClass() == Class::Ranger && GetLevel() > 50) { // no double dmg on headshot
-			if ((defender->IsNPC() && !defender->IsMoving() && !defender->IsRooted()) || !RuleB(Combat, ArcheryBonusRequiresStationary)) {
+			if ((defender->IsNPC() && !defender->IsMoving() && !defender->IsRooted()) || !RuleB(Combat, ArcheryBonusRequiresStationary) || defender->GetNPCTypeID() == 77001 || defender->GetNPCTypeID() == 77002) {
 				hit.damage_done *= 2;
 				MessageString(Chat::MeleeCrit, BOW_DOUBLE_DAMAGE);
 			}
